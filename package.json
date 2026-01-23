@@ -9,9 +9,17 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@elysiajs/eden": "^1.4.6",
+    "@tanstack/react-query": "^5.90.16",
+    "@upstash/realtime": "^1.0.2",
+    "@upstash/redis": "^1.36.1",
+    "date-fns": "^4.1.0",
+    "elysia": "^1.4.21",
+    "nanoid": "^5.1.6",
     "next": "16.1.0",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "zod": "^4.3.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
