@@ -35,7 +35,7 @@ This project demonstrates **end-to-end type safety** using **Eden Treaty** and *
 
 | Tool            | Purpose                                      |
 |-----------------|----------------------------------------------|
-| Next.js 15      | Frontend Framework (App Router)              |
+| Next.js         | Frontend Framework (App Router)              |
 | ElysiaJS        | High-performance Bun-ready Backend Engine    |
 | Eden Treaty     | Type-safe Client–Server Communication        |
 | Upstash Redis   | Serverless Database & Pub/Sub Messaging      |
