@@ -106,31 +106,60 @@ const Page = () => {
 
     return (
           <main className="flex flex-col h-screen max-h-screen overflow-hidden">
-               <header className="border-b border-zinc-800 p-4 flex items-center justify-between bg-zinc-900/30">
-                    <div className="flex items-center gap-4">
-                          <div className="flex flex-col">
+               <header className="sticky top-0 z-50 border-b border-zinc-800 p-4 flex items-center justify-between bg-zinc-900/30 backdrop-blur-md">
+                   <div className="flex items-center gap-4 w-full">                
+                     {/* Left section */}
+                     <div className="flex flex-col md:flex-row md:items-center md:gap-4 w-full">                
+                         <div className="flex items-center justify-between w-full md:w-auto md:flex-row md:items-center md:gap-4">
+                             {/* Room ID + Copy */}
+                             <div className="flex flex-col">
                                <span className="text-xs text-zinc-500 uppercase">Room ID</span>
                                <div className="flex items-center gap-2">
-                                    <span className="font-bold text-green-500">{roomId}</span>
-                                    <button onClick={copyLink} className="text-[10px] bg-zinc-800 hover:bg-zinc-700 px-2 py-0.5 rounded text-zinc-400 hover:text-zinc-200 transition-colors">{copyStatus}</button>
-                               </div> 
+                                 <span className="font-bold text-green-500 truncate max-w-[180px] md:max-w-none whitespace-nowrap overflow-hidden">
+                                   {roomId}
+                                 </span>
+                                 <button
+                                   onClick={copyLink}
+                                   className="text-[10px] bg-zinc-800 hover:bg-zinc-700 px-2 py-0.5 rounded text-zinc-400 hover:text-zinc-200 transition-colors"
+                                 >
+                                   {copyStatus}
+                                 </button>
+                               </div>
+                             </div>
+                             <button
+                               onClick={() => destroyRoom()}
+                               className="md:hidden whitespace-nowrap text-xs bg-zinc-800 hover:bg-red-600 px-3 py-1.5 rounded text-zinc-400 hover:text-white font-bold transition-all group flex items-center gap-2 disabled:opacity-50"
+                             >
+                               <span className="group-hover:animate-pulse">💣</span>
+                             </button>
+                             <div className="hidden md:block h-8 w-px bg-zinc-800" />
                           </div>
-                          <div className="h-8 w-px bg-zinc-800" />
-                          <div className="flex flex-col">
-                              <span className="text-xs text-zinc-500 uppercase">Self-Destruct</span>
-                              <span className={`text-sm font-bold flex items-center gap-2 ${timeRemaining !== null && timeRemaining < 60 ? "text-red-500" : "text-amber-500"}`}>
-                                   {timeRemaining !== null ? formatTimeRemaining(timeRemaining) : "--:--"}
+                          <div className="flex items-center mt-2 md:mt-0 w-full md:w-auto">
+                            <div className="flex flex-col leading-tight">
+                              <span className="text-xs text-zinc-500 uppercase ">Self-Destruct</span>
+                              <span
+                                className={`text-xs md:text-sm font-bold ${
+                                  timeRemaining !== null && timeRemaining < 60
+                                    ? "text-red-500"
+                                    : "text-amber-500"
+                                }`}
+                              >
+                                {timeRemaining !== null ? formatTimeRemaining(timeRemaining) : "--:--"}
                               </span>
+                            </div>
                           </div>
-                    </div>
-
-                    <button onClick={() => destroyRoom()} 
-                       className="text-xs bg-zinc-800 hover:bg-red-600 px-3 py-1.5 rounded text-zinc-400 hover:text-white font-bold transition-all group flex items-center gap-2 disabled:opacity-50">
-                       <span className="group-hover:animate-pulse">💣</span>
-                       DESTROY NOW
-                    </button>
-               </header>
-
+                        </div>
+                   </div>
+                   {/* Desktop destroy button */}
+                   <button
+                     onClick={() => destroyRoom()}
+                     className="hidden md:flex flex-shrink-0 min-w-max whitespace-nowrap text-xs bg-zinc-800 hover:bg-red-600 px-3 py-1.5 rounded text-zinc-400 hover:text-white font-bold transition-all group items-center gap-2 disabled:opacity-50"
+                   >
+                     <span className="group-hover:animate-pulse">💣</span>
+                     <span className="whitespace-nowrap">DESTROY NOW</span>
+                   </button>
+                </header>
+                
                {/* Messages*/}
                <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin">
                     {messages?.messages.length === 0 && (
