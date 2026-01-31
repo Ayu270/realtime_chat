@@ -1,4 +1,4 @@
-# 🔐 Encrypted Realtime Chat
+# 🔐 Anonymous Encrypted Realtime Chat
 
 A high-performance, real-time chat application built with **Next.js 15**, **ElysiaJS**, and **Redis**.  
 This project demonstrates **end-to-end type safety** using **Eden Treaty** and **ultra-fast message delivery** via **Upstash Redis**.
